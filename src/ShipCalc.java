@@ -1,10 +1,24 @@
 import java.util.Scanner;
  class ShipCalc {
     public static void main(String[] args) {
-        System.out.print("Enter the item price: ");
         Scanner in = new Scanner(System.in);
-        double shipCost = 0;
-        double itemPrice = in.nextDouble();
+        double shipCost = 0.0;
+        double itemPrice = 0.0;
+        String trash = "";
+
+        System.out.print("Enter the item price: ");
+        if(in.hasNextDouble())
+        {
+            itemPrice = in.nextDouble();
+            in.nextLine();
+        }
+        else
+        {
+            trash = in.nextLine();
+            System.out.println("You must enter a valid number not: " + trash);
+            System.exit(0);
+        }
+
         if  (itemPrice < 100) {
             shipCost = itemPrice * .02;
             System.out.println("The shipping cost is under $100, so the shipping cost is 2% of the item price.");
